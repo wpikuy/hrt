@@ -11,11 +11,24 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', function (){
+	return redirect('/viewall');
+});
 
-Route::get('home', 'HomeController@index');
+Route::get('/viewall', function (){
+	return view('viewall');
+});
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::get('/upload', function (){
+	return view('upload');
+});
+
+Route::get('/search', function (){
+	return view('search');
+});
+
+Route::get('/getallinfoes', 'info@getAllInfoes');
+Route::get('/deleteinfo', 'info@deleteInfo');
+Route::get('/saveinfo', 'info@saveInfo');
+Route::get('/searchinfo', 'info@searchInfo');
+Route::post('/uploadinfo', 'info@uploadInfo');
